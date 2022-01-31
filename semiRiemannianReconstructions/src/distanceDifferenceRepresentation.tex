@@ -1,0 +1,207 @@
+
+
+
+\section{Distance Different Representation}
+\TOX{See \cite{ivanov2018distance} and \cite{lassas2017distance}, and in particular \cite{lassas2015determination}.}
+
+
+Let $(M,g)$ be an $n$-dimensional, compact Riemannian manifold without boundary with $n\geq 2$.  Let $N\subseteq M$ be an open submanifold, and let $\Omega=M\setminus N$ with the crucial assumption that $\Int(\Omega)\neq\emptyset$.
+
+For a point $x\in M$, define the \textit{(restricted) distance difference function} $D_x:\Omega\times\Omega\to\R$ by
+$$D_x(p,q)=\dist_g(p,x)-\dist_g(q,x),$$
+which yields the collection
+$$\mathcal{D}(M)=\mathcal{D}_\Omega(M)=\{D_x:\Omega\times\Omega\to\R:x\in M\},$$
+or rather as a representation
+$$\mathcal{D}:M\to C(\Omega\times\Omega),\qquad x\mapsto D_x.$$
+We then have the subcollection
+$$\mathcal{D}(N)=\{D_y:y\in N\}\subset\mathcal{D}(M).$$
+
+
+
+
+%%%%
+\subsection{$M$ and $\mathcal{D}(M)$ are Homeomorphic}
+
+We consider $\mathcal{D}(M)\subset C(\Omega\times\Omega)$ as a subspace with the supremum norm 
+$$\norm{f}_{L^\infty}=\sup_{x,y\in\Omega}|f(x,y)|.$$
+
+\begin{thm}
+    $\mathcal{D}(M)\subset C(\Omega\times\Omega)$ is a topological manifold homeomorphic to $M$.  In particular,  $\mathcal{D}(N)$ is homeomorphic to $N$.
+    
+    \HOX{Uses both $n\geq2$ and $\Int(\Omega)\neq\emptyset$.}
+\end{thm}
+
+\begin{proof}
+We first note that $\mathcal{D}$ is $2$-Lipschitz and hence continuous.  Indeed, let $x,y\in M$ and $p,q\in\Omega$, then
+\begin{align*}
+	|D_x(p,q)-D_y(p,q)|&=|\dist(p,x)-\dist(q,x)-\dist(p,y)+\dist(q,y)|\\
+	&\leq|\dist(p,x)-\dist(p,y)|+|\dist(q,x)-\dist(q,y)|\\
+	&\leq\dist(x,y)+\dist(x,y)\\
+	&=2\dist(x,y),
+\end{align*}
+independent of $p,q\in\Omega$.  Thus
+$$\norm{D_x-D_y}_{L^\infty}\leq 2\dist(x,y),$$
+as desired.
+
+
+
+
+We need show $\mathcal{D}$ is injective.\footnote{The idea follows from the standard representation: $r_1(p)=\dist(x_1,p)$ and $r_2(p)=\dist(x_2,p)$.  If $r_1=r_2$ on open set, then outside $\cut(x_1)\cup\cut(x_2)$ $\grad{r_1}_p=\grad{r_2}_p$, and hence $x_1=\gamma_{p,-\xi}(r_1(p))=\gamma_{p,-\xi}(r_2(p))=x_2$.  However, the lengths aren't the same in the above proof, and must be circumvented.}  To this end, let $x,y\in M$ and suppose $D_x=D_y$, but $x\neq y$.  Let $q\in\Int(\Omega)$ and $\ell_x=\dist(q,x),$ $\ell_y=\dist(q,y)$.  Without loss of generality, assume $\ell_x\leq\ell_y$. Let $\eta\in S_q M$ be such that $\gamma_{q,\eta}([0,\ell_x])$ is a minimizing geodesic segment from $q$ to $x$.
+
+Let $0<s<\ell_x$ be such that $\gamma_{q,\eta}([0,s])\subset\Int(\Omega)$ and let $p=\gamma_{q,\eta}(s)$.  Then
+\begin{align*}
+	(\dist(q,p)+\dist(p,y))-\dist(q,y)&=\dist(q,p)+D_y(p,q)\\
+	&=\dist(q,p)+D_x(p,q)\\
+	&=\dist(q,p)+\dist(p,x)-\dist(q,x)\\
+	&=0,
+\end{align*}
+and hence $p$ is on the minimizing geodesic from $q$ to $y$.\footnote{See \textit{Riemannian Geodesics} notes, ``Cut Points'' section.}
+
+Let $\alpha$ denote a minimizing geodesic segment from $p$ to $y$ with length $\ell_y-s$.  Then the union $\gamma_{q,\eta}([0,s])\cup\alpha$ is a distance minimizing curve from $q$ to $y$ and is thus a geodesic.  Hence $\alpha$ is the continuation of $\gamma_{q,\eta}([0,s])$, and so $y=\gamma_{q,\eta}(\ell_y)$.  Since $\gamma_{q,\eta}([0,\ell_x])$ and $\gamma_{q,\eta}([0,\ell_y])$ are distance minimizing geodesics from $q$ to $x$, and from $q$ to $y$, respectively, and $x\neq y$, we conclude that $\ell_x\neq\ell_y$ and hence that $\ell_x<\ell_y$.
+
+Let $q'\in\Int(\Omega)$ be such that $q'\notin\gamma_{q,\eta}(\R)$ (which clearly exists as $n\geq 2$), and let $\ell_x'=\dist(q',x)$ and $\ell_y'=\dist(q',y)$.  Then as before, there exists $\eta'\in S_{q'}M$ such that $\gamma_{q',\eta'}([0,\ell_x'])$ and $\gamma_{q',\eta'}([0,\ell_y'])$ are distance minimizing geodesics from $q'$ to $x$ and from $q'$ to $y$, respectively, again since $x\neq y$, we have that $\ell_x'\neq\ell_y'$.
+
+Let $\beta$ denote the minimizing geodesic segment with length $|\ell_y-\ell_x|$ (accounting for either possibility of $\ell_x'<\ell_y'$ or $\ell_y'<\ell_x'$).  Then the union $\gamma_{q,\eta}([0,\ell_x])\cup\beta$ is a distance minimizing geodesic from $q$ to $y$, and is thus a geodesic.  In particular, this implies that
+$$\gamma_{q,\eta}'(\ell_x)=\pm\gamma_{q',\eta'}'(\ell_x'),$$
+and hence that $q'\in\gamma_{q,\eta}(\R)$, a contradiction.  Thus $x=y$.
+
+Finally, since $M$ is compact and $(C(\Omega\times\Omega),\norm{\cdot}_{L^\infty})$ is Hausdorff, we conclude via a basic topological result (cf. the Closed Map Lemma in \cite{lee2010introduction}) that $\mathcal{D}:M\to\mathcal{D}(M)$ is a homeomorphism, and hence that $\mathcal{D}:N\to\mathcal{D}(N)\subset\mathcal{D}(M)$ is a homeomorphism.
+
+
+\end{proof}
+
+We note that if $X\subseteq M$ is a dense subset, then since $\mathcal{D}$ is a homeomorphism, that
+$$\mathcal{D}(M)=\cl{\mathcal{D}(X)},$$
+where the closure is taken with respect to the topology of $C(\Omega,\Omega)$.  That is, the distance difference functions corresponding to $x$ in a dense subset $X$ determine the distance difference functions on the whole space $M$.
+
+
+
+%%%%
+\subsection{$M$ and $\mathcal{D}(M)$ are Diffeomorphic}
+
+We first need a linear algebra lemma.
+
+\begin{lem}\label{thm:linAlgLemma}
+    Let $(V,\ip{\cdot,\cdot})$ be an $n$-dimensional, inner product space, with a fixed $v\in V\setminus\{0\}$.  Then there exists a a basis $v_1,..,v_n\in V$ such that $\norm{v_j}=1$ for $1\leq j\leq n$, and
+    $$v=a^1v_1+a^2v_2,$$
+    with
+    $$c^i\neq\frac{\norm{v}^2}{\ip{v_i,v}},\qquad ci\neq0,$$
+    for $i=1,2$.
+    
+    Moreover, for a basis, there exists $\epsilon>0$ such that the vectors
+    $$\left\{\frac{v+tv_1}{\norm{v+tv_1}}-\frac{v}{\norm{v}},...,\frac{v+tv_n}{\norm{v+tv_n}}-\frac{v}{\norm{v}}\right\}$$
+    are linearly independent for any $t\in(0,\epsilon)$.
+\end{lem}
+
+\begin{proof}
+Let $v^\perp\in V$ be such that $\ip{v,v^\perp}=0$, $\norm{v^\perp}=\norm{v}$ (in fact, nonzero is all that's needed).  Then for $i=1,2$, let
+$$v_i=\frac{v+(-1)^iv^\perp}{\sqrt{2}\norm{v}},$$
+and
+$$c^i=\frac{\norm{v}}{\sqrt{2}}.$$
+Complete $\{v_1,v_2\}$ to a basis $\{v_1,...,v_n\}$ and we've satisfied the first claim.
+
+Let $v=c^jv_j$, where $c^1,c^2$ are as above and $c^j=0$ for $3\leq j\leq n$.  Then for each $1\leq j\leq n$, let
+$$f_j(t)=t\norm{v}+c^j(\norm{v}-\norm{tv_j+v}).$$
+Then $f_j(0)=0$, and
+$$\frac{df_j}{dt}(0)=\norm{v}-c^j\frac{\ip{v_j,v}}{\norm{v}},$$
+which is nonzero by our choices of $c^j$.  That is, there exists $\epsilon>0$ such that $f_j(t)\neq0$ for all $t\in (0,\epsilon)$ for each $1\leq j\leq n$.  Let $\{a_1,...,a_n\}\subset\R$ be such that
+$$0=\sum_{j=1}^na_j\left(\frac{v+tv_j}{\norm{v+tv_j}}-\frac{v}{\norm{v}}\right)=\sum_{j=1}^na_j\left(\frac{t+c^j}{\norm{v+tv_j}}-\frac{c^j}{\norm{v}}\right)v_j.$$
+Since $\{v_j\}$ forms a basis, we see that
+$$a_j\left(\frac{t+c^j}{\norm{v+tv_j}}-\frac{c^j}{\norm{v}}\right)=0,$$
+for each $1\leq j\leq n$.  Since the expression in the parentheses vanishes exactly when $f_j(t)=0$, we see that it's nonzero for our chosen $t\in(0,\epsilon)$, and hence
+$$a_1=\cdots=a_n=0,$$
+as desired.
+\end{proof}
+
+\begin{prop}
+    Fix $(x,\xi)\in SM$ and let $\gamma_{x,\xi}:[0,b]\to M$ be a distance minimizing geodesic segment.  For any $a\in(0,b)$, let $z=\gamma_{x,\xi}(a)$ and $\zeta=\gamma_{x,\xi}'(a)\in S_zM$.  Then there exists a basis $\{\eta_j\in T_zM:1\leq j\leq n\}$ of $T_zM$ and $\epsilon>0$ such that for all $s\in (0,\epsilon)$, there is a neighborhood $U\subseteq M$ of $x$ such that the function $F:U\to\R^n$,
+    $$F(y)=(D_y(z,z_j):1\leq j\leq n),\qquad z_j=\gamma_{z,\eta_j}(s),$$
+    is a smooth coordinate map.
+\end{prop}
+
+\begin{proof}
+Since $\rest{\gamma_{x,\xi}}_{[0,b]}$ is minimizing, $\rest{\gamma_{x,\xi}}_{[0,a]}$ has no cut points from $x$ to $z$.  Then there exists neighborhoods $U_x\subset M$ of $x$ and $U_z\subset M$ of $z$ such that $(p,q)\mapsto\dist(p,q)$ is smooth on $U_x$ and $U_z$.  Letting $v:=a\xi$, we have that $d(\exp_x)_v$ is nonsingular.  Choose vectors $v_1,v_2\in T_xM$ as in \cref{thm:linAlgLemma} and complete to a basis $\{v_j\}$ of $T_xM$.  Then again by \cref{thm:linAlgLemma}, there exists $\delta>0$ such that for any $t\in(0,\delta)$ that
+$$\left\{\frac{v+tv_1}{\norm{v+tv_1}}-\frac{v}{\norm{v}},...,\frac{v+tv_n}{\norm{v+tv_n}}-\frac{v}{\norm{v}}\right\}$$
+forms a basis for $T_xM$.
+
+Let $\eta_j=d(\exp_x)_v(v_j)\in T_zM$, and note that $\{\eta_j\}$ then forms a basis for $T_zM$ by the nondegeneracy of $d(\exp_x)_v$.  Let
+$$c_j(t)=\exp_x^{-1}(\gamma_{z,\eta_j}(t))$$
+denote a curve in $T_xM$ by possibly restricting $U_z$ so that $\rest{\exp_x^{-1}}_{U_z}$ is a diffeomorphism.  Then
+\begin{align*}
+	c_j(0)&=\exp_x^{-1}(\gamma_{z,\eta_j}(0))\\
+	&=\exp_x^{-1}(z)\\
+	&=a\xi\\
+	&=v,
+\end{align*}
+and
+\begin{align*}
+	c_j'(0)&=\rest{\frac{d}{dt}}_{t=0}(\exp_x^{-1}(\gamma_{z,\eta_j}(t)))\\
+	&=d(\exp_x^{-1})_z(\eta_j)\\
+	&=(d(\exp_x^{-1})_v)^{-1}(\eta_j)\\
+	&=v_j.
+\end{align*}
+Hence for fixed $1\leq j\leq n$, the two curves in $T_xM$ given by
+$$t\mapsto\left(\frac{c_j(t)}{|c_j(t)|_g}-\frac{v}{|v|_g}\right),\qquad t\mapsto\left(\frac{v+tv_j}{|v+tv_j|_g}-\frac{v}{|v|_g}\right),$$
+satisfy the same initial point
+$$0\mapsto0$$
+and the same initial velocity
+$$0\mapsto\frac{v_j|v|_g^2-vg(v,v_j)}{|v|_g^3}.$$
+\TOX{Thus by considering the determinants obtained by the coefficients of the above vectors in the basis $\{v_j\}$, we see there exists $\epsilon>0$ such that any $t\in(0,\epsilon)$, the vectors
+$$\left\{\frac{c_1(t)}{|c_1(t)|_g}-\frac{v}{|v|_g},...,\frac{c_n(t)}{|c_n(t)|_g}-\frac{v}{|v|_g}\right\}$$
+are linearly independent.}
+\HOX{I don't see why this is true.  Linear algebra fact?}
+
+Letting 
+$$z_j=\gamma_{z,\eta_j}(s)=\exp_x(c_j(s))$$
+as in the statement of the proof, we then see that
+$$z_j=\gamma_{x,c_j(s)}(1)=\gamma_{x,\frac{c_j(s)}{|c_j(s)|_g}}(|c_j(s)|_g)=\gamma_{xz_j}(|c_j(s)|_g),$$
+and hence
+$$\gamma_{x,\frac{c_j(s)}{|c_j(s)|_g}}'(0)=\frac{c_j(s)}{|c_j(s)|_g}.$$
+Thus
+\begin{align*}
+	\grad{D_{(\cdot)}(z,z_j)}_x&=\grad{\dist(z,\cdot)-\dist(z_j,\cdot)}_x\\
+	&=\gamma_{zx}'(\dist(z,x))-\gamma'_{z_jx}(\dist(z_j,x))\\
+	&=-\gamma_{xz}'(0)+\gamma_{xz_j}'(0)\\
+	&=-\frac{v}{|v|_g}+\frac{c_j(s)}{|c_j(s)|_g}.
+\end{align*}
+As this is true for each $j\in\{1,...,n\}$, we conclude that $F$ is regular at $x$, and hence by the Inverse Function Theorem, there exists an open neighborhood $U\subseteq M$ of $x$ such that $F:U\to\R^n$ is a coordinate map.
+\end{proof}
+
+These charts $\{(U,F)\}$ on $M$ thus must form a compatible smooth structure on $M$.
+
+\begin{thm}
+    The map $\mathcal{D}:M\to\mathcal{D}(M)$ is a diffeomorphism.
+\end{thm}
+
+\begin{proof}
+Let $\{U_\alpha,F_\alpha\}$ denote the coordinate charts on $M$ as defined above.  Since $\mathcal{D}$ is a homeomorphism, $\{\mathcal{D}(U_\alpha)\}$ is an open cover of $\mathcal{D}(M)$ and consider the maps $F_\alpha\circ\mathcal{D}^{-1}:\mathcal{D}(U_\alpha)\to\R^n$.  Then for any $U_\alpha\cap U_\beta\neq\emptyset$, we see that on this intersection that the maps between
+\begin{align*}
+	(F_\alpha\circ\mathcal{D}^{-1})\circ(F_\beta\circ\mathcal{D}^{-1})^{-1}&=F_\alpha\circ F_\beta^{-1}
+\end{align*}
+which are smooth, and thus determine a charts on $\mathcal{D}(M)$ turning $\mathcal{D}(M)$ into a smooth $n$-dimensional manifold.
+
+Finally, fix some chart $(U,F)$ on $M$ and $(\mathcal{D}(U),F\circ\mathcal{D}^{-1})$ on $\mathcal{D}(M)$.  Then on $U$, we have that
+$$\mathcal{D}=(\mathcal{D}\circ F)^{-1}\circ F,$$
+which is smooth, and hence $D$ is smooth.  Similarly, on $\mathcal{D}(U)$, we have that
+$$\mathcal{D}^{-1}=F^{-1}\circ(F\circ\mathcal{D}^{-1}),$$
+which is also smooth.  Since $\mathcal{D}$ is smooth homeomorphism with smooth inverse, we conclude that $\mathcal{D}$ is a diffeomorphism.
+\end{proof}
+
+
+
+
+
+\TOX{For pregeodesics and geodesic equivalence and projective equivalence and such, cf. \cite{candela2008geodesics}, \cite{topalov1997tensor}, \cite{bolsinov2003geometrical}, \cite{bolsinov2003integrable}, \cite{topalov2003geodesicintegrability}, \cite{matveev2012geodesically}, \cite{eastwood2007metric}, \cite{mikevs1996geodesic}, \cite{bryant2008solution}, \cite{eastwood2008notes}.
+
+}
+
+
+
+
+
+
+
+
+
+
+

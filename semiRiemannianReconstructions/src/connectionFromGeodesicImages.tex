@@ -1,0 +1,217 @@
+
+
+
+
+%%%%%
+\section{Constructing a Connection from Pregeodesics}
+
+Let $M$ be a connected smooth manifold of dimension $n\geq 2$.  Suppose we are given a collection of curves $\{t\mapsto\gamma(t;\alpha):\alpha\in A\}$ on $M$.  
+
+\paragraph{Goal:} Does there exist a symmetric affine connection $\nabla$ on $M$ such that for each $\alpha\in A$, the curve $t\mapsto\gamma(t;\alpha)$ is a pregeodesic with respect to $\nabla$?
+
+We first note that if $\nabla$ is a connection on $M$, then in coordinates $(U,(x^j))$, we have the Christoffel symbols $\Gamma_{ij}^k:U\to\R$ given by
+$$\nabla_{\partial_i}\partial_j=\Gamma_{ij}^k\partial_k.$$
+Thus if we know $\Gamma_{ij}^k$ with respect to $(U,(x^j))$, we know the connection $\rest{\nabla}_U$.  Hence this is a local problem, and so we may assume $U\subset\R^n$ is small with our usual coordinates $(x^j)$, and we've reduced the problem to the following.
+
+\paragraph{New Goal:} Does there exist a symmetric affine connection (now denoted) $\Gamma_{ij}^k$ on $U$ such that for each $\alpha\in A$, the curve $t\mapsto\gamma(t;\alpha)$ is a pregeodesic with respect to $\Gamma_{ij}^k$?  Note that now the collection of curves lives in $U$.
+
+We first specify that our curves in the collection each come with a domain, i.e., $\gamma$ is in our collection if $\gamma=\gamma(t;\alpha)$ and $\gamma:(a,b)\to M$ for some $a\leq-\infty<b\leq\infty$.  We let $I(\gamma)$ or $I(\alpha)$ denote the domain of $\gamma$.  
+
+We need our collection of curves to be ``large''.  That is, for any $x\in U$, define the set of vectors
+$$\Omega_x:=\{\xi\in T_xU:\text{ there exists }\alpha\in A,\,t_0\in I(\alpha)\text{ such that }\gamma'(t_0;\alpha)\propto\xi\}.$$
+Our collection of curves will be large enough if each $x\in U$ the set $\Omega_x$ contains an open subset of $T_xU$.  Set $\Omega=\bigcup_{x\in U}\Omega_x$.  We call a pair $(t_0;\alpha)$, $x_0$-admissible if $\gamma'(t_0;\alpha)\in\Omega_{x_0}$.
+
+
+
+%%%%%
+\subsection{Pregeodesics}
+Let $M$ be a smooth manifold with symmetric connection $\nabla$.  Recall that a curve $\gamma:J\to M$ is a \textit{geodesic} if $\gamma$ satisfies the \textit{geodesic equation}, $D_t\gamma'=0$ which in local coordinates with Christoffel symbols $\Gamma_{ij}^k$ is written
+\begin{equation}\label{eq:geoEqun}
+\frac{d^2\gamma^k}{dt^2}+\frac{d\gamma^i}{dt}\frac{d\gamma^j}{dt}\Gamma_{ij}^k=0.	
+\end{equation}
+
+
+A curve $\hat{\gamma}:I\to M$ is said to be a \textit{pregeodesic} if it satisfies the \textit{pregeodesic equation}
+$$D_t\hat{\gamma}'=f(t)\hat{\gamma}',$$
+for some continuous $f:I\to\R$.  In coordinates, this reads
+\begin{equation}\label{eq:pregeoEqunGen}
+\frac{d^2\hat{\gamma}^k}{dt^2}+\frac{d\hat{\gamma}^i}{dt}\frac{d\hat{\gamma}^j}{dt}\Gamma_{ij}^k=f(t)\frac{d\hat{\gamma}^k}{dt}.	
+\end{equation}
+
+
+We shall let $s$ denote our affine parameters for geodesics and $t$ our arbitrary parameters.
+
+\begin{prop}
+    A curve $\hat{\gamma}:I\to M$ is a pregeodesic if and only if there exists a diffeomorphism $\phi:J\to I$ such that the curve $\gamma:=\hat{\gamma}\circ\phi$ is a geodesic.
+\end{prop}
+
+\TOX{
+Cf. Lemma 6.1.66 in %\cite{szilasi2013connections}
+
+Also in the same source Theorem 8.4.16.
+}
+
+\begin{proof}
+Suppose there exists a diffeomorphism $\phi:J\to I$ with $t=\phi(s)$ such that $\gamma=\hat{\gamma}\circ\phi$ is a geodesic.  Then
+$$\frac{d\gamma^k}{ds}=\frac{d\hat{\gamma}^k}{dt}\frac{d\phi}{ds},$$
+and
+$$\frac{d^2\gamma^k}{ds^2}(s)=\frac{d^2\hat{\gamma}^k}{dt^2}(\phi(s))(\phi'(s))^2+\frac{d\hat{\gamma}^k}{dt}(\phi(s))\phi''(s).$$
+Moreover, for $\psi:I\to J$, $\psi=\phi^{-1}$, we have that
+$$\psi'(t)=\frac{1}{\phi'(\psi(t))},$$
+and
+$$\phi''(\psi(t))=-(\phi'(\psi(t)))^3\psi''(t).$$
+
+Now, since $\gamma$ is a geodesic, we have that
+\begin{align*}
+	0&=\frac{d^2\gamma^k}{ds^2}+\frac{d\gamma^i}{ds}\frac{d\gamma^j}{ds}\Gamma_{ij}^k\\
+	&=\rest{\frac{d^2\hat{\gamma}^k}{dt^2}}_{\phi(s)}(\phi'(s))^2+\rest{\frac{d\hat{\gamma}^k}{dt}}_{\phi(s)}\phi''(s)+\rest{\frac{d\hat{\gamma}^i}{dt}}_{\phi(s)}\rest{\frac{d\hat{\gamma}^j}{dt}}_{\phi(s)}(\phi'(s))^2\Gamma_{ij}^k,
+\end{align*}
+or rather
+$$0=(\phi'(\psi(t)))^2D_t\hat{\gamma}'+\phi''(\psi(t))\hat{\gamma}',$$
+and simplifying
+\begin{align*}
+	D_t\hat{\gamma}'&=-\frac{\phi''(\psi(t))}{(\phi'(\psi(t)))^2}\hat{\gamma}'\\
+	&=\phi'(\psi(t))\psi''(t)\hat{\gamma}',
+\end{align*}
+thus showing $\hat{\gamma}$ is a pregeodesic.
+
+Conversely, suppose $D_t\hat{\gamma}'=f(t)\hat{\gamma}'$ for some continupus $f:I\to\R$.  Then fix any $a\in I$ and define a function $g:I\to\R$ by
+$$g(t)=\exp\left\{\int_a^t f(\lambda)d\lambda\right\}.$$
+Then $g'(t)=f(t)g(t)$ which is continuous, so $g\in C^1(I)$.  Moreover, fix any $b\in I$ and define $\psi:I\to\R$ by
+$$\psi(t)=\int_b^tg(\tau)d\tau.$$
+Then $\psi\in C^2(I)$ by construction, and $\psi'(t)=g(t)\neq0$ for all $t\in I$, and so $\psi:I\to J$ is a diffeomorphism for some $J\subseteq\R$.  Let $\phi:=\psi^{-1}:J\to I$ with $t=\phi(s)$ and let $\gamma=\hat{\gamma}\circ\phi$.  Then from our previous calculation
+\begin{align*}
+	D_s\gamma'&=(\phi'(\psi(t)))^2D_t\hat{\gamma}'+\phi''(\psi(t))\hat{\gamma}'\\
+	&=\hat{\gamma}'(f(t)\phi'(\psi(t))^2+\phi''(\psi(t)))\\
+	&=\hat{\gamma}'(f(t)\phi'(\psi(t))^2-(\phi'(\psi(t)))^3\psi''(t))\\
+	&=\hat{\gamma}'(f(t)\phi'(\psi(t))^2-(\phi'(\psi(t)))^3f(t)\psi'(t))\\
+	&=f(t)\hat{\gamma}'((\phi'(\psi(t)))^2-(\phi'(\psi(t)))^2)\\
+	&=0,
+\end{align*}
+thus showing that $\gamma$ is a geodesic.
+\end{proof}
+
+From the above proof, we note that for an affine change of parameter $s\mapsto as+b$ geodesics go to geodesics, that is, given a geodesic $\gamma(s)$, the curve $\gamma(as+b)$ is also a geodesic.  However, $\gamma(t)$ is a pregeodesic, then from the above computation, if $\tilde{\gamma}(t)=\gamma(at+b)$, we get that
+$$D_t\tilde{\gamma'}=a^2D_t\gamma=a^2f(t)\gamma'=af(t)\tilde{\gamma}'.$$
+So $\tilde{\gamma}$ is still a pregeodesic, but satisfies a different pregeodesic equation with $af$ instead of $f$.  
+
+We with impose further restrictions on $f$ so that pregeodesics satisfy the same pregeodesic equation under affine changes in parameter.  To this end, let $F:TM\to\R$ be a continuous function on the tangent bundle, that's homogeneous of degree $1$, i.e.,
+$$F(a\xi)=aF(\xi)$$
+for any $a\in\R$, $\xi\in TU$, and consider the equation
+\begin{equation}\label{eq:pregeoEqun}
+	D_t\gamma'=F(\gamma')\gamma'.
+\end{equation}
+If $\gamma:I\to\R$, then letting $f(t)=F(\gamma'(t))$, we see that $f:I\to\R$ is continuous and hence that $\gamma$ is a pregeodesic.  Moreover, by previous remarks, this equation is invariant under affine changes of parameter.
+
+In particular, if $\xi\in T_xM$ is such that $\gamma'(t_0)=\xi$ for some pregeodesic $\gamma$ which satisfies
+$$D_t\gamma'=F(\gamma')\gamma',$$
+for some $F$ with the above properties.  Then for any $a\in\R\setminus\{0\}$, the pregeodesic $\tilde{\gamma}(t)=\gamma(at)$ solves the same pregeodesic equation and satisfies
+$$\tilde{\gamma}'(a^{-1}t_0)=a\gamma(t_0)=a\xi.$$
+
+The relates our interlude of pregeodesics to our topic at hand.  Namely, if $\gamma(t,\alpha)$ is in our collection of curves, we assume without loss of generality that all affine reparametrization of $\gamma(t;\alpha)$ are in the collection as well, since they solve the exact same pregeodesic equation, \cref{eq:pregeoEqun}.  
+
+Moreover, by this assumption on our collection of curves, if $\xi\in\Omega_x$, then $a\xi\in\Omega_x$ for all $a\neq0$.  Moreover, since we assume $\Omega_x$ contains an open subset of $T_xU$, we conclude that $\Omega_x$ contains a nonempty open double $C_x$.
+
+
+\TOX{
+Given a pregeodesic $\gamma$, can we always find such an $F$?  Seems to be true, but I can't find a source for this.  Check Levi-Civita's paper.
+
+Yes!  If $\hat{\gamma}$ is a pregeodesic starting at $(x,v)\in TM$, and let $\gamma=\hat{\gamma}\circ\phi$ denote the geodesic starting $(x,v)$ after reparametrization by $\phi$.  Then
+$$f(\phi(s))=-\frac{\phi''(s)}{(\phi'(s))^2},$$
+and since $\phi(0)=0$, define
+$$F(v)=f(0).$$
+}
+
+
+\subsection{Uniqueness of Connection up to Gauge Freedom}
+
+We first describe a gauge freedom on the problem.  Suppose we have a symmetric affine connection $\Gamma_{ij}^k$ on $U$, and let $\alpha\in\Omega^1(U)$ be any differential $1$-form.  Then define a new symmetric affine connection by
+$$\cl{\Gamma}_{ij}^k=\Gamma_{ij}^k+\delta_i^k\alpha_j+\delta_j^k\alpha_i.$$
+Suppose $\gamma:I\to U$ is a curve that satisfies the pregeodesic equation
+$$\ddot{\gamma}^k+\dot{\gamma}^i\dot{\gamma}^j\Gamma_{ij}^k=f(\gamma')\dot{\gamma}^k,$$
+for some prescribed continuous, homogeneous of degree $1$ map $f:TU\to\R$.  Then
+\begin{align*}
+	f(\gamma')\dot{\gamma}^k&=\ddot{\gamma}^k+\dot{\gamma}^i\dot{\gamma}^j\Gamma_{ij}^k\\
+	&=\ddot{\gamma}^k+\dot{\gamma}^i\dot{\gamma}^j\cl{\Gamma}_{ij}^k-\dot{\gamma}^i\dot{\gamma}^j\delta_i^k\alpha_j-\dot{\gamma}^i\dot{\gamma}^j\delta_j^k\alpha_i\\
+	&=\ddot{\gamma}^k+\dot{\gamma}^i\dot{\gamma}^j\cl{\Gamma}_{ij}^k-2\alpha(\gamma')\dot{\gamma}^k,
+\end{align*}
+and so $\gamma$ solves the pregeodesic equation with respect to $(\cl{\Gamma},\cl{f})$, where
+$$\cl{f}=f+2\alpha.$$
+
+Thus any pregeodesic $\gamma$ with respect to $(\Gamma,f)$ is also a pregeodesic with respect to $(\cl{\Gamma},\cl{f})$ for any $1$-form $\alpha$.  This means our data cannot distinguish between connections up to gauge freedom.
+
+We now show that such a gauge freedom is our only obstruction to uniqueness when such a connection exists.  To this end, let change our thinking of the pregeodesic equation, and firstly, we shall only work at a fixed point $x_0\in U$.  Let $(t_0;\alpha)$ be an $x_0$-admissible curve, and consider the system of equations
+$$\ddot{\gamma}^k+\dot{\gamma}^i\dot{\gamma}^j\Gamma_{ij}^k(x_0)=f(\gamma')\dot{\gamma}^k.\qquad (*)$$
+As $\gamma$ is part of our data, we wish to find $\Gamma_{ij}^k$ and $\rest{f}_{\Omega_{x_0}}$ for which $(*)$ is satisfied.  We note that if $\gamma$ solves $(*)$ then infinitely many do as well, by the homogeneity of $f$ and using infinitely many affine changes of parameter of $\gamma$.  
+
+
+\begin{prop}
+    For all $x_0\in U$, suppose $(\Gamma,f)$ and $(\cl{\Gamma},\c{f})$ solve $(*)$ for all $x_0$-admissible $(t_0;\alpha)$'s.  Then there exists $\alpha\in\Omega^1(U)$ such that
+    $$\cl{\Gamma}_{ij}^k=\Gamma_{ij}^k+\delta_i^k\alpha_j+\delta_j^k\alpha_i$$
+    and
+    $$\cl{f}=f+2\alpha.$$
+\end{prop}
+
+\begin{proof}
+Fix $x_0\in U$, and since $(\Gamma,f)$ and $(\cl{\Gamma},\cl{f})$ both solve $(*)$, we subtract the expressions to obtain
+$$\hat{\Gamma}_{ij}^k(x_0)\dot{\gamma}^i\dot{\gamma}^j=\hat{f}(\gamma')\dot{\gamma}^k$$
+for all $x_0$-admissible $(t_0;\alpha)$'s, where
+$$\hat{\Gamma}_{ij}^k=\Gamma_{ij}^k-\cl{\Gamma}_{ij}^k,\qquad\hat{f}=f-\cl{f}.$$
+In particular, we have that
+$$\hat{\Gamma}_{ij}^kv^iv^j=\hat{f}(v)v^k$$
+for all $v\in\Omega_{x_0}$.
+
+For $k\in\{1,...,n\}$, let $\sigma^k:T_{x_0}U\times T_{x_0}U\to\R$ denote the symmetric, bilinear form defined by
+$$\sigma^k(u,v)=\hat{\Gamma}_{ij}^ku^iv^j.$$
+In particular, $\sigma^k$ satisfies the parallelogram law, i.e.,
+$$0=\sigma^k(u+v,u+v)+\sigma^k(u-v,u-v)-2\sigma^k(u,u)-2\sigma^k(v,v).$$
+Hence, for $u,v\in\Omega_{x_0}$ with $u+v,u-v\in\Omega_{x_0}$ as well (which clearly exists by continuity and that $\Omega_{x_0}$ contains an open subset of $T_{x_0}U$), we have that
+\begin{align*}
+	0&=\hat{f}(u+v)(u^k+v^k)+\hat{f}(u-v)(u^k-v^k)-2\hat{f}(u)u^k-2\hat{f}(v)v^k\\
+	&=\left(\hat{f}(u+v)+\hat{f}(u-v)-2\hat{f}(u)\right)u^k+\left(\hat{f}(u+v)-\hat{f}(u-v)-2\hat{f}(v)\right)v^k,
+\end{align*}
+for all $k=1,...,n$, and in particular, as a vectorial equation
+$$0=\left(\hat{f}(u+v)+\hat{f}(u-v)-2\hat{f}(u)\right)u+\left(\hat{f}(u+v)-\hat{f}(u-v)-2\hat{f}(v)\right)v.$$
+Since $\Omega_{x_0}$ contains a nonempty open subset of $T_{x_0}U$, we may choose $u,v\in\Omega_{x_0}$ which are linearly independent.  Hence we get the two equations
+\begin{equation*}
+\begin{aligned}
+	0&=\hat{f}(u+v)+\hat{f}(u-v)-2\hat{f}(u),\\
+	0&=\hat{f}(u+v)-\hat{f}(u-v)-2\hat{f}(v),
+\end{aligned}	
+\end{equation*}
+which then yields
+$$\hat{f}(u+v)=\hat{f}(u)+\hat{f}(v).$$
+Let $V\subset\Omega_{x_0}$ denote this open subset for which on, the above calculations are performed.  Then since $\hat{f}$ is homogeneous of degree $1$, we conclude that $\rest{\hat{f}}_V$ is linear, and hence there exists $\alpha\in T_{x_0}^*U$ such that $\rest{\hat{f}}_V=2\rest{\alpha}_V$.  Since $V$ is open, by linearly, we conclude that $\hat{f}=2\alpha$ on $T_{x_0}U$, and hence that
+$$f=\cl{f}+2\alpha.$$
+
+Now, define a new connection
+$$\tilde{\Gamma}_{ij}^k=\cl{\Gamma}_{ij}^k+\delta_i^k\alpha_j+\delta_j^k\alpha_i.$$
+Then for all $x_0$-admissible $(t_0;\alpha)$'s, we have that
+\begin{align*}
+	\ddot{\gamma}^k+\dot{\gamma}^i\dot{\gamma}^j\tilde{\Gamma}_{ij}^k&=\ddot{\gamma}^k+\dot{\gamma}^i\dot{\gamma}^j\cl{\Gamma}_{ij}^k+2\alpha(\gamma')\dot{\gamma}^k\\
+	&=\ddot{\gamma}^k+\dot{\gamma}^i\dot{\gamma}^j\cl{\Gamma}_{ij}^k+\hat{f}(\gamma')\dot{\gamma}^k\\
+	&=\ddot{\gamma}^k+\dot{\gamma}^i\dot{\gamma}^j\cl{\Gamma}_{ij}^k+f(\gamma')\dot{\gamma}^k-\cl{f}(\gamma')\dot{\gamma}^k\\
+	&=f(\gamma')\dot{\gamma}^k\\
+	&=\ddot{\gamma}^k+\dot{\gamma}^i\dot{\gamma}^j\Gamma_{ij}^k,
+\end{align*}
+that is,
+$$\tilde{\Gamma}_{ij}^kv^iv^j=\Gamma_{ij}^kv^iv^j$$
+for all $v\in C_{x_0}$.  Since this set is open, we have that
+$$\tilde{\Gamma}_{ab}^k=\partial_{v^a}\partial_{v^b}(\tilde{\Gamma}_{ij}^kv^iv^j)=\partial_{v^a}\partial_{v^b}(\Gamma_{ij}^kv^iv^j)=\Gamma_{ab}^k,$$
+and hence that
+$$\tilde{\Gamma}_{ij}^k=\Gamma_{ij}^k.$$
+
+\end{proof}
+
+\TOX{
+This is missing a lot of details, and potentially needs more work.  I think I'm missing why Teemu needed to add some of the details he did.
+}
+
+
+
+
+
+
+
+
+

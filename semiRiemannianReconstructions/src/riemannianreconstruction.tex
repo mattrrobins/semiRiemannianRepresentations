@@ -1,0 +1,167 @@
+
+
+
+
+\section{Boundary Distance Representation of a Riemannian Manifold}
+
+\TOX{See Section 3.8 in \cite{kachalov2001inverse}.}
+
+Let $(M,g)$ be a compact, connected Riemannian manifold with nonempty boundary of dimension $n$.  We will construct a differentiable and Riemannian structure on the set $R(M)$ of Riemannian distance functions and we will show that $(R(M),\tilde{g})$ is isometric to $(M,g)$.
+
+Let $d:M\times M\to\R$ denote the Riemannian distance function on $M$, and for $x\in M$, let $r_x:\partial M\to \R$ denote $r_x(y)=d(x,y)$.  Since $d$ is continuous, we have that $r_x$ is continuous for each $x\in M$, that is, $r_x\in C(\partial M)\subset L^\infty(\partial M)$ for each $x\in M$.  Let $R:M\to C(\partial M)$ denote this map, that is,
+$$R(x)=r_x.$$
+Then $R(M)\subset C(\partial M)$ and is a topological space with the inherited topology of $L^\infty(\partial M)$.
+\begin{lem}
+    $R:M\to R(M)\subset C(\partial M)\subset L^\infty(M)$ is a homeomorphism.
+\end{lem}
+
+\begin{proof}
+By the reverse triangle inequality, we get that
+\begin{align*}
+	\norm{r_x-r_y}_{L^\infty(\partial M)}&=\sup_{z\in\partial M}|r_x(z)-r_y(z)|\\
+	&=\sup_{z\in\partial M}|(d(x,z)-d(y,z)|\\
+	&\leq d(x,y),
+\end{align*}
+and so $R$ is continuous.  Next, suppose $r_x=r_y$ in $C(\partial M)$.  Let
+$$s=\min_{z'\in\partial M}r_x(z'),$$
+and let $z\in\partial M$ be such that $r_x(z)=s$.  But then $x$ lies on the normal geodesic from the boundary $\gamma_{z,\nu}$ with $\gamma_{z,\nu}(s)=x$.  As the same is true for $r_y$, we see that $x=y$.  Hence $R$ is injective.  Since $R:M\to R(M)$ is by definition surjective, $M$ is compact and $L^\infty(\partial M)$ is Hausdorff, we see by the Closed Map Lemma that $R:M\to R(M)$ is a homeomorphism.  Indeed, we need only show that $R$ is a closed map.  To this end, suppose $K\subseteq M$ is closed, and hence compact.  Since $R$ is continuous, $R(K)$ is compact in $L^\infty(\partial M$, and since $L^\infty(\partial M)$ is Hausdorff, $R(K)$ is closed.
+\end{proof}
+
+\begin{remark}
+	Note that if $(M,g)$ is geodesically regular, (i.e., any two points has a unique geodesic connecting them, and any geodesic can be continued to a geodesic whose endpoints lie on the boundary), then $(M,d_g)$ is an isometric as metric spaces to $(R(M),d_\infty)$ via $R$, and hence via the Myers-Steenrod theorem is actually a Riemannian isometry.
+\end{remark}
+
+\begin{prop}
+    There is a differentiable structure on $R(M)$ making $R:M\to R(M)$ a diffeomorphism.
+\end{prop}
+
+\begin{proof}
+Fix $r\in R(M)$.  Let $S(r)\in[0,\infty)$ and $Z(r)\in \partial M$ be defined as
+$$S(r)=\min_{z\in\partial M}r(z),$$
+and
+$$r(Z(r))=S(r).$$
+Note that $Z(r)\in\partial M$ may not be unique.  Let
+$$\Gamma_z=\{r\in R(M):r(z)=S(r)\},\quad z\in\partial M,$$
+and
+$$\tau_b(z)=\max_{r\in\Gamma_z}r(z),$$
+is the boundary cut distance as defined in the previous section.  Note that
+$$\Gamma_z=R(\gamma_{z,\nu}([0,\tau_b(z)]),$$
+is the image of the normal geodesic before the cut point.  Letting $\cut_{\partial M}$ denote the boundary cut locus as in the previous section, it's clear that we can now define $R(\cut_{\partial M})$ from these terms.  Indeed,
+$$R(\cut_{\partial M})=\{r\in R(M):S(r)=\tau_b(Z(r))\}.$$
+
+We first construct coordinates on $R(M\setminus\cut_{\partial M})=R(M)\setminus R(\cut_{\partial M})$.  Since we have boundary normal coordinates given by
+$$\exp_{\partial M}:\partial M\times[0,\rho)\to \{x\in M:d(x,\partial M)<\rho\},$$
+that is,
+$$(z,s)(x)=\exp_{\partial M}^{-1}(x).$$
+We know that $s=s(x)\in C(M)$ and $z=z(x)\in C(M\setminus\cut_{\partial M})$.  Hence $S=s\circ R^{-1}$ is continuous on $R(M)$ and $Z=z\circ R^{-1}$ is continuous on $R(M\setminus\cut_{\partial M})$.
+
+Now let $r_0\in R(M\setminus\cut_{\partial M})$ and $z_0=Z(r_0)$. Let $V\subseteq\partial M$ be a coordinate neighborhood of $z_0$ with coordinates $(z^1,...,z^{n-1})$.  Then $(z^1,...,z^{n-1},s)$ form coordinates on the open set
+$$Z^{-1}(V)=\{r\in R(M\setminus\cup(\partial M)):Z(r)\in V\}.$$
+Thus, the pair $(Z(r),S(r))$ determine a system of smooth coordinates on $R(M\setminus\cut_{\partial M})$ making
+$$R:M\setminus\cut_{\partial M}\to R(M\setminus\cut_{\partial M})$$
+a diffeomorphism.
+
+Near $R(\cut_{\partial M})$ we will use boundary distance coordinates instead of normal coordinates.  Let $r_0\in R(\Int(M))$ and $x=R^{-1}(r_0)$.  Then there are points $z^1,...,z^n\in\partial M$ such that $\rho^j(x)=d(x,z^j)$ define local coordinates near $x$.  For $z\in\partial M$, let $E_z:R(M)\to\R_+$ denote the evaluation functions, that is,
+$$E_z(r)=r(z).$$
+Then
+\begin{align*}
+	(E_{z^1}(r),...,E_{z^n}(r))&=(r(z^1),...,r(z^n))\\
+	&=(d(x,z^1),...,d(x,z^n))\\
+	&=(\rho^1(x),...,\rho^n(x))\\
+	&=(\rho^1(R^{-1}(r)),...,\rho^n(R^{-1}(r))).
+\end{align*}
+
+These two coordinate structures combine to make $R(M)$ a smooth manifold such that $R:M\to R(M)$ is a diffeomorphism.
+
+\end{proof}
+
+
+\begin{prop}
+    There exists a Riemannian metric $\tilde{g}$ on $R(M)$ such that $R:(M,g)\to (R(M),\tilde{g})$ is a Riemannian isometry.
+\end{prop}
+
+ Note that such a metric exists on $R(M)$ since $R$ is a diffeomorphism, its pushforward $R_*$ is an isomorphism, so defining $\tilde{g}=R_*g$ would work, but as we don't know $g$, we need to construct $\tilde{g}$ explicitly.
+
+Fix $r_0\in R(\Int(M))$, and let $z^1,...,z^n$ be points in $\partial M$ such that
+$$(\rho^1,...,\rho^n)=(E_{z^1}(r),...,E_{z^n}(r)),$$
+define local coordinates near $r_0$.  Consider the evaluation function $E_z(r)$ where $z$ lies in some neighborhood $V$ of $z_0=Z(r_0)$ and $r$ lies in some neighborhood $R(U)$, where $U$ is a neighborhood of $x_0=R^{-1}(r_0)$.  Now
+$$E_z(r)=d(x,z),$$
+where $R(x)=r$.  By possibly shrinking $U$ and $V$, the distance function $d$ is smooth on $U\times V$ and the collection of vectors
+$$W=\{\text{grad}_x(d(x,z))_{x_0}\in S_{x_0}M:z\in V\}$$
+is open in the unit ball $S_{x_0}M\subset T_{x_0}M$.  Since $R_*$ is an isomorphism, it then follows that
+$$\mathcal{W}=\{\grad{E_z}_{r_0}\in T_{r_0}R(M):z\in V\},$$
+is an $n-1$-dimensional submanifold of $T_{r_0}R(M)$.  Moreover, for $R$ to be an isometry, we actually have that $\mathcal{W}\subseteq S_{r_0}R(M)$.  For the moment, due to not knowing $\tilde{g}$ as of yet, let's work with
+$$\mathcal{W}^*=\{d(E_z)_{r_0}\in T_{r_0}^*R(M):z\in V\}.$$
+Then similarly, $\mathcal{W}^*\subseteq S_{r_0}^*R(M)$ is open.
+
+This submanifold $\mathcal{W}^*\subseteq S_{r_0}^*R(M)$ determines the metric tensor $\tilde{g}^{jk}(r_0)$.  Since $(\rho^1,...,\rho^n)$ are local coordinates about $r_0$, we have that
+$$\mathcal{W}^*=\{(\partial_{\rho^1}(E_z)_{r_0},...,\partial_{\rho^n}(E_z)_{r_0}):z\in V\},$$
+and so $\R_+\mathcal{W}$ is an open cone in $T_{r_0}^*R(M)$.  Therefore, for any
+$$\xi=\alpha(\partial_{\rho^1}(E_z)_{r_0},...,\partial_{\rho^n}(E_z)_{r_0})\in\R_+\mathcal{W},$$
+we have the function
+$$F(\xi)=\tilde{g}(\xi,\xi)=\tilde{g}^{jk}(r_0)\xi_j\xi_k=\alpha^2,$$
+is known.  Since this is known on the open subset $\R_+\mathcal{W}^*$, we can compute the differentials to determine
+$$\tilde{g}^{jk}(r_0)=\partial_{\xi_j}\partial_{\xi_k}F(\xi).$$
+
+Thus we have determined $\tilde{g}^{jk}(r_0)$.  Since $r_0\in R(\Int(M))$ was arbitrary, we've determine $\tilde{g}$ on all of $R(\Int(M))$.  Rewriting $\tilde{g}$ in the boundary normal coordinates and using the smoothness on $R(M)$ then recovers $\tilde{g}$ on all of $R(M)$, and hence concludes the reconstruction.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

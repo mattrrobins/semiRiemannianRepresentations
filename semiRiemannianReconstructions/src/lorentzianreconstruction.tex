@@ -1,0 +1,149 @@
+\def\t{\frak{t}}
+\def\reg{\text{reg}}
+
+\section{Reconstruction of $(M,g)$ as a Lorentzian Manifold}
+
+\TOX{See \cite{kurylev2014inverse}.}
+
+Let $(M,g)$ be a globally hyperbolic spacetime of dimension $n+1$ with $n\geq 2$.  Let $U\subseteq M$ be a domain and suppose $p^-$ and $p^+$ are two points $U$ such that there is a timelike path $\mu\subset U$ from $p^-$ to $p^+$.  Also suppose that $V\subset J^-(p^+)\setminus I^-(p^-)$ is a relatively compact open subset of $M$. 
+
+
+
+We will construct a differentiable and Lorentzian structure on the set $\mathcal{F}(V)$ of \textit{observation time functions} which is conformally equivalent to $(V,\rest{g}_V)$.
+
+Let $g^+$ be an arbitrary Riemannian metric placed on $M$.  For $q\in V$, we define the light observation set of $q$ as
+$$\mathcal{P}_U(q)=\mathcal{L}_q^+\cap U.$$
+Then we have the unindexed collection of light observation sets
+$$\mathcal{P}_U(V)=\{\mathcal{P}_U(q):q\in V\}\subset 2^U.$$
+
+Given such a $\mu$, we can find a family $\{\mu_a:[-1,1]\to U:a\in\mathcal{A}\}$ of future-pointing timelike paths indexed by $a\in\mathcal{A}$ with $\mathcal{A}$ a metric space and $\mu=\mu_{a_0}$ for some $a_0\in\mathcal{A}$.  Moreover, we may assume that $(a,s)\mapsto\mu_a(s)$ is an open and continuous map, and by possibly shrinking $U$ that
+$$U=\bigcup_{a\in\mathcal{A}}\mu_a([-1,1]).$$
+
+\begin{thm}
+    Suppose we know the differentiable manifold $U$, the conformal class of $\rest{g}_U$, the paths $\mu_a:[-1,1]\to U$, $a\in\mathcal{A}$ with the above properties, and the set $\mathcal{P}_U(V)$.  Then this data determines the unique topological and differentiable structure of $V$ and the conformal class of $\rest{g}_V$.
+\end{thm}
+
+Let $-1<s_-<s_+<1$ be such that $\mu(s_\pm)=p^\pm$.  Furthermore, let $s_{-2}\in(-1,s_-)$ and $s_{+2}\in(s_+,1)$ with $p^{\pm2}=\mu(s_{\pm2})$.  By possibly shrinking $\mathcal{A}$, we further assume that for any $a\in\mathcal{A}$ that
+$$\mu_a(s_{-2})\in I(\mu(-1),p^-),$$
+$$\mu_a(s_{+2})\in I(p^+,\mu(1)).$$
+
+Let $\t$ denote the time-separation function, that is, for $x\leq y$,
+$$\t(x,y)=\sup_{\gamma}L(\gamma)=\sup_{\gamma}=\int_0^1\sqrt{-g(\gamma'(s),\gamma'(s))}ds,$$
+where $\gamma$ is any piecewise smooth causal path $\gamma:[0,1]\to M$ from $x$ to $y$.  If $x\not\leq y$, then $\t(x,y)=0$.  Since $M$ is globally hyperbolic, we have that $\t:M\times M\to[0,\infty)$ is continuous and $J^\pm(x)$ is closed for all $x\in M$.  Moreover for $x<y$ there is a longest causal geodesic $\gamma:[0,1]\to M$ with $\gamma(0)=x, \gamma(1)=y$ and $\t(x,y)=L(\gamma).$
+
+For a nonzero $(x,\xi)\in TM$, define $\mathcal{T}(x,\xi)\in(0,\infty]$ to be the maximal value for which $\gamma_{x,\xi}:[0,\mathcal{T}(x,\xi))\to M$ is defined, that is, $\gamma_{x,\xi}$ on this interval is future-inextendible. Now, for $(x,\xi)\in L^+M$, $x\in J^-(p^+)$, define
+$$T_{+2}(x,\xi)=\sup\{t\geq0:\gamma_{x,\xi}(t)\in J^-(p_{+2})\}.$$
+Since $J^-(p_{+2})$ is closed, and $\gamma_{x,\xi}$ are future-pointing curves, $T_{+2}:L^+(J^-(p^+))\to\R$ is upper-semicontinuous.  Moreover, since the set
+$$K:=\{(x,\xi)\in L^+M:x\in\cl{V}, \norm{\xi}_{g^+}=1\},$$
+is compact, there exists $c_0\in\R_+$ such that $T_{+2}(x,\xi)\leq c_0$ for all $(x,\xi)\in K$.
+
+For $(x,\xi)\in L^+M$, we define the null cut distance function
+$$\rho(x,\xi)=\sup\{s\in[0,\mathcal{T}(x,\xi)):\t(x,\gamma_{x,\xi}(s))=0\}.$$
+If $\rho(x,\xi)<\infty$, then the point $p(x,\xi)=\gamma_{x,\xi}(\rho(x,\xi))$ is called the (first) null cut point of the geodesic $\gamma_{x,\xi}$.  Since $(M,g)$ is globally hyperbolic $p(x,\xi)$ is either a first conjugate point (i.e., $\exp_x$ is degenerate at $\rho(x,\xi)\xi)\in T_xM$) or there exists another lightlike geodesic $\gamma_{x,\eta}$ from $x$ to $p(x,\xi)$ with $\eta\neq c\xi$ for any $c\in\R$.
+
+
+\begin{defn}
+    Let $a\in\mathcal{A}$ and $q\in J^-(p^+)\setminus I^-(p^-)$.  The observation time function $f_a:J^-(p^+)\setminus I^-(p^-)\to[-1,1]$ is defined by
+    $$f_a(q)=\inf\left(\{s\in[-1,1]:\mu_a(s)\in J^+(q)\}\cup\{1\}\right).$$
+    Moreover, let $\mathcal{E}_a(q)=\mu_a(f_a(q)).$  Then $\mathcal{E}_a(q)$ is the earliest point on $\mu_a$ as which light is observed from $q$.
+\end{defn}
+
+
+\begin{lem}
+    Let $a\in\mathcal{A}$ and $q\in J^-(p^+)\setminus I^-(p^-)$.
+    \begin{enumerate}[i.]
+    	\item It holds that $s_{-2}\leq f_a(q)\leq s_{+2}$.
+    	\item We have that $\mathcal{E}_a(q)\in J^+(q)$ and $\t(q,\mathcal{E}_a(q))=0$.  Moreover, the function $s\mapsto\t(q,\mu_a(s))$ is continuous, nondecreasing on $[-1,1]$ and strictly increasing on $[f_a(q),1]$.
+    	\item Assume that $p\in U$.  Then $p=\mathcal{E}_a(q)$ for some $a\in\mathcal{A}$ if and only if $p\in\mathcal{P}_U(q)$ and $\t(q,p)=0$.  Furthermore, this is equivalent to the fact that there exists $\xi\in L_q^+M$ and $t\in[0,\rho(q,\xi)]$ such that $p=\gamma_{q,\xi}(t)$.
+    	\item The function $q\mapsto f_a(q)$ is continuous on $J^-(p^+)\setminus I^-(p^-)$.
+    \end{enumerate}
+\end{lem}
+
+\begin{defn}
+    Let $q\in J^-(p^+)\setminus I^-(p^-)$.  Let
+    \begin{align*}
+    	\mathcal{D}_U(q):=\{(y,\eta)\in L^+U&:y=\gamma_{q,\xi}(t)\in U, \eta=\gamma_{q,\xi}'(t),\\
+    	&\text{for some }\xi\in L_q^+M, 0\leq t\leq\rho(q,\xi)\}
+    \end{align*}
+    and
+    \begin{align*}
+    	\mathcal{D}_U^\reg(q):=\{(y,\eta)\in L^+U&:y=\gamma_{q,\xi}(t)\in U, \eta=\gamma_{q,\xi}'(t),\\
+    	&\text{for some }\xi\in L_q^+M, 0<t<\rho(q,\xi)\}.
+    \end{align*}
+    We say that $\mathcal{D}_U(q)$ is the direction set of $q$ and $\mathcal{D}_U^\reg(q)$ is the regular direction set of $q$.
+    
+    Let $\mathcal{E}_U(q)=\pi(\mathcal{D}_U(q))$ and $\mathcal{E}_U^\reg(q)=\pi(\mathcal{D}_U^\reg(q))$, where $\pi:TU\to U$ is the standard bundle projection.  We say that $\mathcal{E}_U(q)$ is the set of earliest observations of $q$ in $U$ and $\mathcal{E}_U^\reg(q)$ is the set of regular earliest observations of $q$ in $U$. Denote 
+    $$\mathcal{E}_U(V)=\{\mathcal{E}_U(q)\in 2^U:q\in V\}.$$
+\end{defn}
+
+Note that $\mathcal{E}_U(q)=\{\mathcal{E}_a(q):a\in\mathcal{A}\}$ and the lower-semicontinuity of $\rho$ implies that $\mathcal{D}_U^\reg(q)\subset TU$ is a smooth $2n$-manifold and $\mathcal{E}_U^\reg(q)\subset U$ is a smooth $n$-manifold.
+
+It's now easily seen that
+$$\mathcal{E}_U(q)=\{x\in\mathcal{P}_U(q):\text{there is no }y\in\mathcal{P}_U(q)\text{ such that }y\ll x\}.$$
+
+By our Lemma, we have that
+$$f_a(q)=\min\{s\in[-1,1]:\mu_a(s)\in J^+(q)\},\qquad \mathcal{E}_a(q)=\mu_a(f_a(q)),$$
+and by the above remark we have that
+$$\mathcal{E}_U(q)=\{\mathcal{E}_a(q):a\in\mathcal{A}\},$$
+so we may now conclude that the data $\mathcal{P}_U(V)$ and $\{\mu_a:a\in\mathcal{A}\}$ determine $\mathcal{E}_U(V)$.  
+
+{\bfseries Remark.} Given $\mathcal{E}_U(V)$, one can then determine the sets $\mathcal{D}_U(q)$, $\mathcal{D}_U^\reg(q),$ and $\mathcal{E}_U^\reg(q)$.
+
+
+\subsection{Construction of $V$ as a Topological and Differentiable Manifold}
+
+Given $q\in J^-(p^+)\setminus I^-(p^-)$, define the function $F_q:\mathcal{A}\to\R$ by
+$$F_q(a)=f_a(q).$$
+We then can define the function $\mathcal{F}:J^-(p^+)\setminus I^-(p^-)\to\R^\mathcal{A}$, that maps $q$ to the function $F_q:\mathcal{A}\to\R$, that is,
+$$\mathcal{F}(q)=F_q.$$
+We endow $\R^\mathcal{A}$ with the product topology (which is Hausdorff since $\R$ is Hausdorff).  By considering the set $\mathcal{F}(V)$ we will construct our topological and differentiable structure on $V$, and by using $\mathcal{E}_U(V)$ our conformal class of the metric $\rest{g}_V$.
+
+\begin{lem}
+    Let $V\subset J^-(p^+)\setminus I^-(p^-)$ be a relatively compact open set.  Then the map $\mathcal{F}:V\to\mathcal{F}(V)$ is a homeomorphism.
+\end{lem}
+
+\begin{proof}
+Since $\R^\mathcal{A}$ has the product topology, and
+$$\pi_a\circ\mathcal{F}=f_a,$$
+is continuous by the above, we see that $\mathcal{F}:V\to\mathcal{F}(V)$ is continuous.
+
+Now we show that $\mathcal{F}:\cl{V}\to\mathcal{F}(\cl{V})=\cl{\mathcal{F}(V)}$ is injective.  Since $\mathcal{F}(q)$ uniquely determines the set $\mathcal{E}_U(q)$, it suffices to show that $\mathcal{E}_U:\cl{V}\to\mathcal{E}_U(\cl{V})$ is injective.  To this end, suppose $q_1,q_2\in\cl{V}$ with $q_1\neq q_2$ and assume that $\mathcal{E}_U(q_1)=\mathcal{E}_U(q_2)$.  By our remark, we then have that $\mathcal{D}_U(q_1)=\mathcal{D}_U(q_2)$.  Choose $a\in\mathcal{A}$ such that $q_j\notin\mu_a$ for $j=1,2$.  Let $(p,\eta)\in\mathcal{D}_U(q_j)$ with $p=\mathcal{E}_a(q_j)$.  Then there exists $t_1,t_2>0$ such that $\gamma_{p,\eta}(-t_j)=q_j$, $j=1,2$.  Since $q_1\neq q_2$, we have that $t_1\neq t_2$ and so without loss of generality assume that $t_2>t_1$.  Moreover, by definition of $\mathcal{D}_U(q_j)$, there exists $\xi_j\in L_{q_j}^+M$ such that
+$$(p,\eta)=(\gamma_{q_j,\xi_j}(t_j),\gamma_{q_j,\xi_j}'(t_j)),\qquad (q_1,\xi_1)=(\gamma_{q_2,\xi_2}(t_2-t_1),\gamma_{q_2,\xi_2}'(t_2-t_1)),$$
+with
+$$0\leq t_1\leq\rho(q_1,\xi_1),\qquad 0\leq t_2\leq\rho(q_2,\xi_2).$$
+Thus
+$$t_2-t_1<t_2\leq \rho(q_2,\xi_2),$$
+and so $(q_1,\xi_1)$ is not a null cut point of $\gamma_{q_2,\xi_2}$.  By lower-semicontinuity, for any $\delta_1>0$ there exists $\delta_2>0$ such that
+$$\rho(q_2,\xi_2')>\rho(q_2,\xi_2)\delta_1,$$
+whenever $\norm{\xi_2'-\xi_2}<\delta_2.$  Choose $\xi_2'\in T_{q_2}M$ with $\norm{\xi_2'-\xi_2}<\delta_2$ and $\xi_2'$ not parallel with $\xi_2$, and $t_2'\in(t_2-2\delta_1,t_2-\delta_1)$ such that $p'=\gamma_{q_2,\xi_2'}(t_2')\in U$ and $p'\neq q_1$.  Then
+$$t_2'<t_2-\delta_1\leq\rho(q_2,\xi_2)-\delta_1<\rho(q_2,\xi_2').$$
+Let $\eta'=\gamma_{q_2,\xi_2'}(t_2')$ and so $(p',\eta')\in\mathcal{D}_U(q_2)=\mathcal{D}_U(q_1)$.  Hence, there exists $t_1'>0$ such that $q_1=\gamma_{p',\eta'}(-t_1')$.  Let $\xi_1'=\gamma_{p',\eta'}(-t_1')$, which is seen to not be parallel with $\xi_1$, otherwise $\xi_2'$ would be parallel with $\xi_2$.  Now, the union of the geodesic $\gamma_{q_2,\xi_2}([0,t_2-t_1])$ and the geodesic $-\gamma_{p',\eta'}([-t_1',0])$ is a causal curve from $q_2$ to $p'$ that is not a lightlike pregeodesic, indeed, if it were a lightlike geodesic then $p'$ would be an ordinary cut point of $\gamma_{q_2,\xi_2'}$, but $t_2'<\rho(q_2,\xi_2')$.  Thus $\t(q_2,p')>0$ which is a contradiction since $p'\in\mathcal{E}_U(q_2)$.  Thus $\mathcal{E}_U:\cl{V}\to\mathcal{E}_U(\cl{V})$ in injective, and hence so is $\mathcal{F}:\cl{V}\to\mathcal{F}(\cl{V})$.
+
+Finally, since $\cl{V}$ is compact, $\R^\mathcal{A}$ is Hausdorff and $\mathcal{F}:\cl{V}\to\mathcal{F}(\cl{V})$ is bijective, it follows that $\mathcal{F}:\cl{V}\to\mathcal{F}(\cl{V})$ is a homeomorphism, and hence $\mathcal{F}:V\to\mathcal{F}(V)$ is a homeomorphism as desired.
+
+\end{proof}
+
+
+
+We now introduce coordinates on $\mathcal{F}(V)$ to make it into a smooth manifold for which $\mathcal{F}:V\to\mathcal{F}(V)$ is a diffeomorphism.
+
+Let
+$$\mathcal{Z}:=\{(q,p)\in V\times U:p\in\mathcal{E}_U^\reg(q)\}.$$
+Then for every $(q,p)\in\mathcal{Z}$, there exists a unique $\xi\in L_q^+M$ such that $\gamma_{q,\xi}(1)=p$ and $\rho(q,\xi)>1$.  We denote the aforementioned map via $\Theta(q,p)=(q,\xi)$ which maps $\Theta:\mathcal{Z}\to L^+V$.  Given $(q,\xi)\in TM$, let $B_\epsilon(q,\xi)$ denote an $\epsilon$-neighborhood about $(q,\xi)$ in $TM$ with respect the $g^+$-Sasaki metric on $TM$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
